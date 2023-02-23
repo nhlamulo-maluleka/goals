@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { faClock, faPenAlt } from '@fortawesome/free-solid-svg-icons';
-import { interval, Observable, Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { GoalStatus } from '../helpers/goal-type';
 import { GoalsService } from '../services/goals.service';
 
