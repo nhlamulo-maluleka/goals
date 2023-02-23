@@ -1,16 +1,40 @@
+$textFont: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 .card {
   position: relative;
-  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0;
 
   .card-body {
     padding: 0;
 
+    .icon{
+      font-size: 9pt;
+    }
+
     .goal-title {
+      position: relative;
       padding: 0.3rem;
       margin: 0;
       font-weight: bold;
       font-size: 10pt;
       color: rgb(0, 0, 0);
+      display: flex;
+      align-items: center;
+
+      span:nth-child(1){
+        width: 92%;
+      }
+
+      span:nth-child(2){
+        position: absolute;
+        right: .4rem;
+        cursor: pointer;
+        padding-left: .3rem;
+        padding-right: .2rem;
+        border-radius: 30%;
+        transition: all .5s;
+      }
     }
 
     .goal-progress{
@@ -19,27 +43,63 @@
 
       .progress{
         position: relative;
-        height: .5rem;
-
-        span{
-          position: absolute;
-          margin: auto;
-        }
+        height: .3rem;
+        border-radius: 0;
       }
     }
 
     .goal-description {
       padding: 0.3rem;
-      font-size: small;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      word-break: keep-all;
+      display: flex;
+      align-items: flex-start;
+
+      .description{
+        margin-left: .2rem;
+        font-size: 9pt;
+        font-family: $textFont;
+      }
+    }
+
+    .goal-util{
+      padding: .2rem;
+      display: flex;
+      align-items: center;
+
+      .duration{
+        margin-left: .2rem;
+        font-size: 9pt;
+        font-family: $textFont;
+      }
     }
 
     .goal-control{
       button{
         padding: 0;
         font-size: 10pt;
-
+        border-radius: 0;
       }
+    }
+
+    // Column handling
+    .backlog{
+      background-color: lightblue;
+    }
+
+    .started{
+      background-color: rgb(235, 169, 93);
+    }
+
+    .paused{
+      background-color: rgb(236, 213, 78);
+    }
+
+    .completed{
+      background-color: rgb(94, 223, 77);
+    }
+
+    .archived{
+      background-color: rgb(214, 99, 214);
     }
   }
 }

@@ -1,24 +1,56 @@
 <div class="card">
   <div class="card-body">
     <div [ngSwitch]="goalStatus">
-      <h5 *ngSwitchCase="'backlog'" class="goal-title bg-primary">
-        {{ goalTitle }}
+      <h5 *ngSwitchCase="'backlog'" class="goal-title backlog">
+        <span>{{ goalTitle }}</span>
+        <span ngbDropdown>
+          <div ngbDropdownToggle id="dropdownBasic1"></div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div ngbDropdownItem (click)="archiveGoalFromBacklog()">Archive Goal</div>
+          </div>
+        </span>
       </h5>
-      <h5 *ngSwitchCase="'started'" class="goal-title bg-info">
-        {{ goalTitle }}
+      <h5 *ngSwitchCase="'started'" class="goal-title started">
+        <span>{{ goalTitle }}</span>
+        <span ngbDropdown>
+          <div ngbDropdownToggle id="dropdownBasic1"></div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div ngbDropdownItem (click)="pauseGoal()">Pause Goal</div>
+          </div>
+        </span>
       </h5>
-      <h5 *ngSwitchCase="'paused'" class="goal-title bg-warning">
-        {{ goalTitle }}
+      <h5 *ngSwitchCase="'paused'" class="goal-title paused">
+        <span>{{ goalTitle }}</span>
+        <span ngbDropdown>
+          <div ngbDropdownToggle id="dropdownBasic1"></div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div ngbDropdownItem (click)="resumeGoalFromPaused()">Resume Goal</div>
+            <div ngbDropdownItem (click)="archiveGoalFromPaused()">Archive Goal</div>
+          </div>
+        </span>
       </h5>
-      <h5 *ngSwitchCase="'completed'" class="goal-title bg-success">
-        {{ goalTitle }}
+      <h5 *ngSwitchCase="'completed'" class="goal-title completed">
+        <span>{{ goalTitle }}</span>
       </h5>
-      <h5 *ngSwitchCase="'archived'" class="goal-title bg-danger">
-        {{ goalTitle }}
+      <h5 *ngSwitchCase="'archived'" class="goal-title archived">
+        <span>{{ goalTitle }}</span>
       </h5>
     </div>
     <div class="goal-description" *ngIf="goalDescription !== null">
-      {{ goalDescription }}
+      <div class="mr-2">
+        <fa-icon
+          [icon]="description"
+          class="icon"></fa-icon>
+      </div>
+      <div class="description">{{ goalDescription }}</div>
+    </div>
+    <div class="goal-util">
+      <div>
+        <fa-icon
+          [icon]="duration"
+          class="icon"></fa-icon>
+      </div>
+      <div class="duration">{{ goalDuration }} Minutes</div>
     </div>
     <div class="goal-progress" *ngIf="goalStatus !== 'backlog'">
       <div class="progress">
@@ -33,7 +65,9 @@
       </div>
     </div>
     <div class="goal-control" *ngIf="goalStatus === 'backlog'">
-      <button class="btn btn-success form-control">Start Goal</button>
+      <button class="btn btn-success form-control" (click)="startGoal($event)">
+        Start Goal
+      </button>
     </div>
   </div>
 </div>

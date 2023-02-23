@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IGoal } from '../helpers/goal-type';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +9,7 @@ export class GoalsService {
     {
       title: "Begin OOP Classes",
       description: "I want to be able to work with classes hereafter",
-      duration: 2,
+      duration: 50,
       status: "backlog",
       subgoals: null
     },
@@ -21,17 +20,16 @@ export class GoalsService {
       status: "backlog",
       subgoals: null
     },
-  ]
-
-  started: Array<IGoal> = [
     {
       title: "Do my OOP IKM",
       description: "Assessment",
       duration: 120,
-      status: "started",
+      status: "backlog",
       subgoals: null
     },
   ]
+
+  started: Array<IGoal> = []
 
   paused: Array<IGoal> = [
     {

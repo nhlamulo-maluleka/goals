@@ -2,14 +2,16 @@
   <div class="col-12 goals-control">
     <button class="btn btn-primary btn-sm">Create New Goal</button>
   </div>
-  <div class="col-12 row pt-2 goals-overview">
+  <div class="col-12 row pt-1 goals-overview">
     <div class="col goal-column">
       <h3 class="text-left">Backlog</h3>
       <div class="d-block">
-        <div *ngFor="let goal of backlogGoals">
+        <div *ngFor="let goal of backlogGoals; let pos = index">
           <app-goal-card
+            [goalId]="pos"
             [goalTitle]="goal.title"
             [goalDescription]="goal.description"
+            [goalDuration]="goal.duration"
             [goalStatus]="'backlog'"
           ></app-goal-card>
         </div>
@@ -18,10 +20,12 @@
     <div class="col goal-column">
       <h3 class="text-left">Started</h3>
       <div class="d-block">
-        <div *ngFor="let goal of startedGoals">
+        <div *ngFor="let goal of startedGoals; let pos = index">
           <app-goal-card
+            [goalId]="pos"
             [goalTitle]="goal.title"
             [goalDescription]="goal.description"
+            [goalDuration]="goal.duration"
             [goalStatus]="'started'"
           ></app-goal-card>
         </div>
@@ -30,10 +34,12 @@
     <div class="col goal-column">
       <h3 class="text-left">Paused</h3>
       <div class="d-block">
-        <div *ngFor="let goal of pausedGoals">
+        <div *ngFor="let goal of pausedGoals; let pos = index">
           <app-goal-card
+            [goalId]="pos"
             [goalTitle]="goal.title"
             [goalDescription]="goal.description"
+            [goalDuration]="goal.duration"
             [goalStatus]="'paused'"
           ></app-goal-card>
         </div>
@@ -42,10 +48,12 @@
     <div class="col goal-column">
       <h3 class="text-left">Completed</h3>
       <div class="d-block">
-        <div *ngFor="let goal of completedGoals">
+        <div *ngFor="let goal of completedGoals; let pos = index">
           <app-goal-card
+            [goalId]="pos"
             [goalTitle]="goal.title"
             [goalDescription]="goal.description"
+            [goalDuration]="goal.duration"
             [goalStatus]="'completed'"
           ></app-goal-card>
         </div>
@@ -54,10 +62,12 @@
     <div class="col goal-column">
       <h3 class="text-left">Archived</h3>
       <div class="d-block">
-        <div *ngFor="let goal of archivedGoals">
+        <div *ngFor="let goal of archivedGoals; let pos = index">
           <app-goal-card
+            [goalId]="pos"
             [goalTitle]="goal.title"
             [goalDescription]="goal.description"
+            [goalDuration]="goal.duration"
             [goalStatus]="'archived'"
           ></app-goal-card>
         </div>
