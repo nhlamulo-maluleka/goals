@@ -48,15 +48,6 @@ export class GoalCardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (changes["goalStatus"] && changes["goalStatus"]?.currentValue == 'started') {
-  //     // if(this.progressBarElement){
-  //     //   console.log("hi")
-  //     //   this.progressBarElement.nativeElement.style.width = '50%'
-  //     // }
-  //   }
-  // }
-
   ngOnInit(): void { }
 
   archiveGoalFromBacklog() {
