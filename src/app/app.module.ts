@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoalsComponent } from './goals/goals.component';
 import { TopNavComponent } from './goals/views/top-nav/top-nav.component';
 import { GeekGoalsComponent } from './goals/views/geek-goals/geek-goals.component';
+import { GoalCardComponent } from './goals/views/geek-goals/goal-card/goal-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoalsComponent,
     TopNavComponent,
-    GeekGoalsComponent
+    GeekGoalsComponent,
+    GoalCardComponent
   ],
   imports: [
     BrowserModule,

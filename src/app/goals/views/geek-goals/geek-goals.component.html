@@ -1,23 +1,67 @@
-<div class="row m-0 p-1 text-center">
-  <div class="col-12 float-right m-1">
-    <label for="#">{{value}}</label>
-    <button class="btn btn-dark btn-sm">Create Goal</button>
+<div class="row m-0 goals-container">
+  <div class="col-12 goals-control">
+    <button class="btn btn-primary btn-sm">Create New Goal</button>
   </div>
-  <div class="col-12 row m-0">
-    <div class="col">
-      <h1 class="rounded bg-primary">Backlog</h1>
+  <div class="col-12 row pt-2 goals-overview">
+    <div class="col goal-column">
+      <h3 class="text-left">Backlog</h3>
+      <div class="d-block">
+        <div *ngFor="let goal of backlogGoals">
+          <app-goal-card
+            [goalTitle]="goal.title"
+            [goalDescription]="goal.description"
+            [goalStatus]="'backlog'"
+          ></app-goal-card>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      <h1 class="rounded bg-success">Started</h1>
+    <div class="col goal-column">
+      <h3 class="text-left">Started</h3>
+      <div class="d-block">
+        <div *ngFor="let goal of startedGoals">
+          <app-goal-card
+            [goalTitle]="goal.title"
+            [goalDescription]="goal.description"
+            [goalStatus]="'started'"
+          ></app-goal-card>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      <h1 class="rounded bg-warning">Paused</h1>
+    <div class="col goal-column">
+      <h3 class="text-left">Paused</h3>
+      <div class="d-block">
+        <div *ngFor="let goal of pausedGoals">
+          <app-goal-card
+            [goalTitle]="goal.title"
+            [goalDescription]="goal.description"
+            [goalStatus]="'paused'"
+          ></app-goal-card>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      <h1 class="rounded bg-info">Completed</h1>
+    <div class="col goal-column">
+      <h3 class="text-left">Completed</h3>
+      <div class="d-block">
+        <div *ngFor="let goal of completedGoals">
+          <app-goal-card
+            [goalTitle]="goal.title"
+            [goalDescription]="goal.description"
+            [goalStatus]="'completed'"
+          ></app-goal-card>
+        </div>
+      </div>
     </div>
-    <div class="col">
-      <h1 class="rounded bg-danger">Archived</h1>
+    <div class="col goal-column">
+      <h3 class="text-left">Archived</h3>
+      <div class="d-block">
+        <div *ngFor="let goal of archivedGoals">
+          <app-goal-card
+            [goalTitle]="goal.title"
+            [goalDescription]="goal.description"
+            [goalStatus]="'archived'"
+          ></app-goal-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>

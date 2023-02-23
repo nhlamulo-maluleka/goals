@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <div [ngSwitch]="goalStatus">
+      <h5 *ngSwitchCase="'backlog'" class="goal-title bg-primary">
+        {{ goalTitle }}
+      </h5>
+      <h5 *ngSwitchCase="'started'" class="goal-title bg-info">
+        {{ goalTitle }}
+      </h5>
+      <h5 *ngSwitchCase="'paused'" class="goal-title bg-warning">
+        {{ goalTitle }}
+      </h5>
+      <h5 *ngSwitchCase="'completed'" class="goal-title bg-success">
+        {{ goalTitle }}
+      </h5>
+      <h5 *ngSwitchCase="'archived'" class="goal-title bg-danger">
+        {{ goalTitle }}
+      </h5>
+    </div>
+    <div class="goal-description" *ngIf="goalDescription !== null">
+      {{ goalDescription }}
+    </div>
+    <div class="goal-progress" *ngIf="goalStatus !== 'backlog'">
+      <div class="progress">
+        <div
+          class="progress-bar text-center"
+          role="progressbar"
+          style="width: 25%"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+    <div class="goal-control" *ngIf="goalStatus === 'backlog'">
+      <button class="btn btn-success form-control">Start Goal</button>
+    </div>
+  </div>
+</div>

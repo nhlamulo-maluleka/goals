@@ -1,0 +1,45 @@
+.card {
+  position: relative;
+  margin-top: 0.4rem;
+
+  .card-body {
+    padding: 0;
+
+    .goal-title {
+      padding: 0.3rem;
+      margin: 0;
+      font-weight: bold;
+      font-size: 10pt;
+      color: rgb(0, 0, 0);
+    }
+
+    .goal-progress{
+      padding: 0rem;
+      margin-top: .4rem;
+
+      .progress{
+        position: relative;
+        height: .5rem;
+
+        span{
+          position: absolute;
+          margin: auto;
+        }
+      }
+    }
+
+    .goal-description {
+      padding: 0.3rem;
+      font-size: small;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .goal-control{
+      button{
+        padding: 0;
+        font-size: 10pt;
+
+      }
+    }
+  }
+}
