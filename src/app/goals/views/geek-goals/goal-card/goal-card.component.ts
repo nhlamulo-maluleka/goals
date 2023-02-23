@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { faClock, faPenAlt } from '@fortawesome/free-solid-svg-icons';
+import { interval, Observable, Subscription } from 'rxjs';
 import { GoalStatus } from '../helpers/goal-type';
 import { GoalsService } from '../services/goals.service';
 
@@ -8,9 +9,11 @@ import { GoalsService } from '../services/goals.service';
   templateUrl: './goal-card.component.html',
   styleUrls: ['./goal-card.component.scss']
 })
-export class GoalCardComponent implements OnInit {
+export class GoalCardComponent implements OnInit, AfterViewInit {
   duration = faClock
   description = faPenAlt
+  interval$!: Subscription
+  progressBarElement!: ElementRef
 
   @Input()
   goalTitle!: string
@@ -27,7 +30,32 @@ export class GoalCardComponent implements OnInit {
   @Input()
   goalId!: number
 
+  @ViewChild("progressBar", { static: false })
+  progressBarObject!: ElementRef
+
   constructor(private goalService: GoalsService) { }
+
+  ngAfterViewInit(): void {
+    if (this.goalStatus == "started") {
+      this.interval$ = interval(1000).subscribe(v => {
+        this.progressBarObject.nativeElement.style.width = `${v}%`
+
+        if(v == 100){
+          this.interval$.unsubscribe()
+          console.log("Done")
+        }
+      })
+    }
+  }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes["goalStatus"] && changes["goalStatus"]?.currentValue == 'started') {
+  //     // if(this.progressBarElement){
+  //     //   console.log("hi")
+  //     //   this.progressBarElement.nativeElement.style.width = '50%'
+  //     // }
+  //   }
+  // }
 
   ngOnInit(): void { }
 
@@ -52,7 +80,6 @@ export class GoalCardComponent implements OnInit {
   }
 
   startGoal(e: any) {
-    console.log(e)
     if (this.goalService.started.length === 0) {
       this.goalService.started.push(this.goalService.backlog[this.goalId])
       this.goalService.backlog = this.goalService.backlog.filter((v, i) => i != this.goalId)

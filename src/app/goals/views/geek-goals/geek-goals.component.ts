@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { interval, Observable } from "rxjs"
+import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { IGoal } from './helpers/goal-type';
 import { GoalsService } from './services/goals.service';
 
@@ -9,17 +8,12 @@ import { GoalsService } from './services/goals.service';
   styleUrls: ['./geek-goals.component.scss']
 })
 export class GeekGoalsComponent implements OnInit {
-  // value!: number
+  @ViewChildren('goalStarted')
+  goalStarted!: Array<ElementRef>
 
   constructor(private goalService: GoalsService) { }
 
-  ngOnInit(): void {
-    // const timer$: Observable<number> = interval(1000)
-
-    // timer$.subscribe((count: number) => {
-    //   this.value = count;
-    // })
-  }
+  ngOnInit(): void {}
 
   get backlogGoals(): Array<IGoal> {
     return this.goalService.backlog;

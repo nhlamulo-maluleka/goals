@@ -37,6 +37,7 @@
       </h5>
     </div>
     <div class="goal-description" *ngIf="goalDescription !== null">
+      <!-- Goal Description -->
       <div class="mr-2">
         <fa-icon
           [icon]="description"
@@ -44,6 +45,7 @@
       </div>
       <div class="description">{{ goalDescription }}</div>
     </div>
+    <!-- Goal Util[Duration] -->
     <div class="goal-util">
       <div>
         <fa-icon
@@ -52,18 +54,21 @@
       </div>
       <div class="duration">{{ goalDuration }} Minutes</div>
     </div>
+    <!-- Goal Progress Bar -->
     <div class="goal-progress" *ngIf="goalStatus !== 'backlog'">
       <div class="progress">
         <div
           class="progress-bar text-center"
           role="progressbar"
-          style="width: 25%"
-          aria-valuenow="25"
+          
+          aria-valuenow="50"
           aria-valuemin="0"
           aria-valuemax="100"
+          #progressBar
         ></div>
       </div>
     </div>
+    <!-- Start Goal Button -->
     <div class="goal-control" *ngIf="goalStatus === 'backlog'">
       <button class="btn btn-success form-control" (click)="startGoal($event)">
         Start Goal
